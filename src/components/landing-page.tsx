@@ -37,7 +37,12 @@ import {
 import { cn } from "@/lib/utils";
 
 const SALES_CONFIG = {
-  basic: { name: "100 Atividades de Alfabetização", price: "R$9,90", checkoutUrl: "#" },
+  basic: {
+    name: "100 Atividades de Alfabetização",
+    oldPrice: "R$29,90",
+    price: "R$9,90",
+    checkoutUrl: "#",
+  },
   complete: {
     name: "300 Atividades de Alfabetização",
     oldPrice: "R$39,90",
@@ -89,26 +94,26 @@ const tones = {
 
 const bonuses = [
   {
-    title: "Mapa de Progresso com Adesivos",
-    text: "Para a criança acompanhar sua evolução.",
+    title: "Caça-Palavras de Leitura",
+    text: "20 caça-palavras temáticos para treinar o reconhecimento de palavras de forma divertida.",
     icon: Trophy,
     tone: "orange",
   },
   {
-    title: "Certificado de Conclusão",
-    text: "Para imprimir quando a criança terminar o caderno.",
+    title: "Fichas de Interpretação de Texto",
+    text: "20 textos curtos com perguntas para desenvolver a compreensão de leitura.",
     icon: Medal,
     tone: "purple",
   },
   {
-    title: "Guia Rápido para os Pais",
-    text: "Como aplicar as atividades no dia a dia.",
+    title: "Desafios de Raciocínio e Leitura",
+    text: "Atividades como ordem alfabética, contagem de sílabas e completar vogais, para desafiar a criança além do básico.",
     icon: Users,
     tone: "mint",
   },
   {
-    title: "Plano de Aplicação de 30 Dias",
-    text: "Um cronograma com a sequência diária das atividades.",
+    title: "Atividades Ilustradas para Recortar e Colar",
+    text: "Exercícios com figuras para ligar, circular e colar, tornando o aprendizado mais visual e lúdico.",
     icon: FileText,
     tone: "pink",
   },
@@ -246,7 +251,7 @@ function BonusSection() {
               className="relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm"
             >
               <span className="absolute right-3 top-3 z-10 max-w-[9rem] rounded-full bg-brand-pink px-3 py-1 text-center text-[0.65rem] font-extrabold uppercase leading-tight text-primary-foreground">
-                Grátis, bônus incluso
+                Bônus incluso
               </span>
               <div
                 className={cn(
@@ -352,13 +357,9 @@ function OfferCard({ complete, onBuy }: { complete?: boolean; onBuy: () => void 
         </p>
       ) : null}
       <div className="my-6">
-        {complete ? (
-          <p className="mb-1 text-sm text-muted-foreground">
-            de <span className="line-through">{SALES_CONFIG.complete.oldPrice}</span> por
-          </p>
-        ) : (
-          <p className="mb-1 text-sm text-muted-foreground">pagamento único de</p>
-        )}
+        <p className="mb-1 text-sm text-muted-foreground">
+          de <span className="line-through">{product.oldPrice}</span> por
+        </p>
         <p
           className={cn("text-5xl font-black", complete ? "text-brand-purple" : "text-foreground")}
         >
@@ -506,10 +507,6 @@ export function LandingPage() {
     <main className="overflow-hidden">
       <section className="relative flex min-h-screen items-center px-5 py-12 md:py-16">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand-pink-soft px-4 py-2 text-sm font-extrabold text-brand-pink">
-            <Sparkles className="size-4" />
-            Aprender juntos fica mais leve
-          </div>
           <h1 className="max-w-4xl text-4xl font-black leading-[1.08] text-foreground md:text-6xl">
             Seu filho pode aprender a ler em casa, com só{" "}
             <span className="text-brand-purple">15 minutos por dia</span>
