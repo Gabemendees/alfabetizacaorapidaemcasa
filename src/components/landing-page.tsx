@@ -329,9 +329,7 @@ function OfferCard({ complete, onBuy }: { complete?: boolean; onBuy: () => void 
     <article
       className={cn(
         "relative flex flex-col rounded-3xl bg-card p-6 shadow-lg md:p-8",
-        complete
-          ? "border-2 border-brand-purple md:scale-[1.03]"
-          : "border border-border",
+        complete ? "border-2 border-brand-purple md:scale-[1.03]" : "border border-border",
       )}
     >
       {complete ? (
@@ -511,8 +509,8 @@ export function LandingPage() {
       <section className="relative flex min-h-screen items-center px-5 py-12 md:py-16">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand-pink-soft px-4 py-2 text-sm font-extrabold text-brand-pink">
-              <Sparkles className="size-4" />
-              Aprender juntos fica mais leve
+            <Sparkles className="size-4" />
+            Aprender juntos fica mais leve
           </div>
           <h1 className="max-w-4xl text-4xl font-black leading-[1.08] text-foreground md:text-6xl">
             Seu filho pode aprender a ler em casa, com só{" "}
