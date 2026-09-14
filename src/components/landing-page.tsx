@@ -5,7 +5,6 @@ import {
   ChevronRight,
   CircleCheck,
   FileText,
-  Gift,
   Heart,
   Medal,
   Printer,
@@ -33,14 +32,14 @@ import {
 import { cn } from "@/lib/utils";
 
 const SALES_CONFIG = {
-  basic: { name: "100 Atividades de Alfabetização", price: "R$ 9,90", checkoutUrl: "#" },
+  basic: { name: "100 Atividades de Alfabetização", price: "R$9,90", checkoutUrl: "#" },
   complete: {
     name: "300 Atividades de Alfabetização",
-    oldPrice: "R$ 39,90",
-    price: "R$ 19,90",
+    oldPrice: "R$39,90",
+    price: "R$19,90",
     checkoutUrl: "#",
   },
-  upsell: { price: "R$ 14,90", checkoutUrl: "#" },
+  upsell: { price: "R$14,90", checkoutUrl: "#" },
 } as const;
 
 const activities = [
@@ -91,22 +90,28 @@ const tones = {
 
 const bonuses = [
   {
-    title: "Mapa de Progresso",
-    text: "Com adesivos para celebrar cada conquista.",
+    title: "Mapa de Progresso com Adesivos",
+    text: "Para a criança acompanhar sua evolução.",
     icon: Trophy,
     tone: "orange",
   },
   {
     title: "Certificado de Conclusão",
-    text: "Um reconhecimento especial no final.",
+    text: "Para imprimir quando a criança terminar o caderno.",
     icon: Medal,
     tone: "purple",
   },
   {
     title: "Guia Rápido para os Pais",
-    text: "Orientações simples para começar bem.",
+    text: "Como aplicar as atividades no dia a dia.",
     icon: Users,
     tone: "mint",
+  },
+  {
+    title: "Plano de Aplicação de 30 Dias",
+    text: "Um cronograma com a sequência diária das atividades.",
+    icon: FileText,
+    tone: "pink",
   },
 ] as const;
 
@@ -184,46 +189,13 @@ function SectionHeading({
   );
 }
 
-function PdfMockup() {
+function HeroBannerPlaceholder() {
   return (
     <div
-      className="relative mx-auto w-full max-w-sm px-8 py-5"
-      aria-label="Prévia ilustrada da capa do PDF"
-    >
-      <div className="absolute inset-x-4 bottom-1 top-10 rotate-6 rounded-2xl bg-brand-purple-soft" />
-      <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border-2 border-foreground/10 bg-card p-6 shadow-xl">
-        <div className="flex items-center justify-between">
-          <span className="rounded-full bg-brand-orange-soft px-3 py-1 text-xs font-extrabold text-brand-orange">
-            PDF PARA IMPRIMIR
-          </span>
-          <Printer className="size-6 text-brand-purple" />
-        </div>
-        <div className="mt-8 text-center">
-          <div className="mx-auto mb-5 flex size-20 items-center justify-center rounded-full bg-brand-mint-soft">
-            <BookOpen className="size-10 text-brand-mint" />
-          </div>
-          <p className="text-3xl font-black leading-tight text-foreground">
-            Atividades de
-            <br />
-            <span className="text-brand-purple">Alfabetização</span>
-          </p>
-          <p className="mt-3 text-sm font-bold text-muted-foreground">
-            Aprender a ler pode ser divertido!
-          </p>
-        </div>
-        <div className="absolute inset-x-6 bottom-6 flex justify-center gap-3">
-          <span className="size-8 rounded-lg bg-brand-pink-soft" />
-          <span className="size-8 rounded-lg bg-brand-orange-soft" />
-          <span className="size-8 rounded-lg bg-brand-mint-soft" />
-        </div>
-      </div>
-      <div className="absolute left-0 top-16 flex size-14 -rotate-6 items-center justify-center rounded-2xl bg-brand-orange text-primary-foreground shadow-lg">
-        <span className="font-black">A+</span>
-      </div>
-      <div className="absolute bottom-16 right-0 flex size-14 rotate-6 items-center justify-center rounded-full bg-brand-pink text-primary-foreground shadow-lg">
-        <Heart className="size-7" />
-      </div>
-    </div>
+      className="aspect-[16/7] w-full rounded-2xl border-2 border-dashed border-border bg-card shadow-sm"
+      role="img"
+      aria-label="Espaço reservado para a imagem principal do material"
+    />
   );
 }
 
@@ -269,24 +241,26 @@ function BonusSection() {
     <section className="bg-brand-purple-soft/50 px-5 py-20 md:py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading eyebrow="Mais valor para sua família" title="E ainda tem bônus" />
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {bonuses.map(({ title, text, icon: Icon, tone }) => (
             <article
               key={title}
-              className="relative rounded-2xl border border-border bg-card p-6 shadow-sm"
+              className="relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm"
             >
-              <span className="absolute right-4 top-4 rounded-full bg-brand-pink-soft px-3 py-1 text-xs font-extrabold uppercase text-brand-pink">
-                Bônus incluso
+              <span className="absolute right-3 top-3 z-10 max-w-[9rem] rounded-full bg-brand-pink px-3 py-1 text-center text-[0.65rem] font-extrabold uppercase leading-tight text-primary-foreground">
+                Grátis, bônus incluso
               </span>
               <div
                 className={cn(
-                  "mb-5 flex size-12 items-center justify-center rounded-xl",
+                  "mb-5 flex aspect-[4/3] items-center justify-center rounded-xl",
                   tones[tone],
                 )}
+                role="img"
+                aria-label={`Espaço reservado para a imagem de ${title}`}
               >
-                <Icon className="size-6" />
+                <Icon className="size-12 stroke-[1.5]" />
               </div>
-              <h3 className="text-xl font-extrabold">{title}</h3>
+              <h3 className="text-lg font-extrabold leading-tight">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
             </article>
           ))}
@@ -302,12 +276,14 @@ function TestimonialsSection() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading eyebrow="Histórias reais de aprendizado" title="Quem já usou, aprovou" />
         <div className="grid gap-4 md:grid-cols-2">
-          {testimonials.map(({ name, city, initials, text }) => (
+          {testimonials.map(({ name, city, text }) => (
             <article key={name} className="rounded-2xl border border-border bg-background p-6">
               <div className="mb-4 flex items-center gap-3">
-                <div className="flex size-12 items-center justify-center rounded-full bg-brand-mint-soft font-extrabold text-brand-mint">
-                  {initials}
-                </div>
+                <div
+                  className="size-12 shrink-0 rounded-full border-2 border-dashed border-brand-mint bg-card"
+                  role="img"
+                  aria-label={`Espaço reservado para a foto de ${name}`}
+                />
                 <div>
                   <h3 className="font-extrabold">{name}</h3>
                   <p className="text-xs text-muted-foreground">{city}</p>
@@ -337,28 +313,30 @@ function OfferCard({ complete, onBuy }: { complete?: boolean; onBuy: () => void 
   const product = complete ? SALES_CONFIG.complete : SALES_CONFIG.basic;
   const bullets = complete
     ? [
-        "300 atividades prontas para imprimir",
-        "Mais níveis e variedade de exercícios",
-        "Todos os 3 bônus inclusos",
-        "Acesso imediato e sem mensalidade",
-        "Imprima quantas vezes quiser",
+        "300 atividades completas",
+        "O triplo de conteúdo do pacote básico",
+        "Tudo do pacote básico, mais rimas, textos curtos, interpretação e desafios de leitura",
+        "Maior variedade de atividades, com menos repetição no dia a dia",
+        "Melhor custo benefício por atividade",
       ]
     : [
-        "100 atividades prontas para imprimir",
-        "Exercícios variados de alfabetização",
-        "Acesso imediato e sem mensalidade",
-        "Imprima quantas vezes quiser",
+        "100 atividades para imprimir",
+        "Atividades de letras, sílabas, palavras e frases",
+        "Ideal para quem está começando agora",
+        "Fácil de imprimir em casa, em preto e branco",
       ];
   return (
     <article
       className={cn(
         "relative flex flex-col rounded-3xl bg-card p-6 shadow-lg md:p-8",
-        complete ? "border-2 border-brand-purple" : "border border-border",
+        complete
+          ? "border-2 border-brand-purple md:scale-[1.03]"
+          : "border border-border",
       )}
     >
       {complete ? (
         <span className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-brand-purple px-5 py-2 text-xs font-black uppercase text-primary-foreground">
-          Mais vendido • Recomendado
+          Mais vendido, recomendado
         </span>
       ) : null}
       <span
@@ -372,6 +350,11 @@ function OfferCard({ complete, onBuy }: { complete?: boolean; onBuy: () => void 
         {complete ? "50% OFF" : "Promoção por tempo limitado"}
       </span>
       <h3 className="text-2xl font-black leading-tight">{product.name}</h3>
+      {complete ? (
+        <p className="mt-4 text-sm font-bold leading-relaxed text-brand-purple">
+          O pacote completo, com tudo que seu filho precisa para aprender a ler do início ao fim.
+        </p>
+      ) : null}
       <div className="my-6">
         {complete ? (
           <p className="mb-1 text-sm text-muted-foreground">
@@ -465,7 +448,7 @@ function UpsellDialog({
         <div className="p-6 sm:p-8">
           <DialogHeader>
             <DialogTitle className="text-center text-2xl font-black leading-tight sm:text-3xl">
-              Espera! Leve o pacote completo com desconto exclusivo
+              Espera, adicione o pacote completo com desconto exclusivo
             </DialogTitle>
             <DialogDescription className="pt-3 text-center text-base leading-relaxed">
               Em vez de 100, receba as <strong className="text-foreground">300 atividades</strong> e
@@ -525,42 +508,42 @@ export function LandingPage() {
 
   return (
     <main className="overflow-hidden">
-      <section className="relative px-5 pb-16 pt-8 md:pb-24 md:pt-14">
-        <div className="mx-auto grid min-h-[78vh] max-w-6xl items-center gap-10 md:grid-cols-[1.08fr_.92fr]">
-          <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand-pink-soft px-4 py-2 text-sm font-extrabold text-brand-pink">
+      <section className="relative flex min-h-screen items-center px-5 py-12 md:py-16">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand-pink-soft px-4 py-2 text-sm font-extrabold text-brand-pink">
               <Sparkles className="size-4" />
               Aprender juntos fica mais leve
-            </div>
-            <h1 className="max-w-3xl text-4xl font-black leading-[1.08] text-foreground md:text-6xl">
-              Seu filho pode aprender a ler em casa, com só{" "}
-              <span className="text-brand-purple">15 minutos por dia</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              Fichas prontas para imprimir — sem inventar nada, sem mensalidade. Você imprime, a
-              criança aprende brincando.
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="mt-8 h-14 w-full rounded-xl text-base font-extrabold shadow-lg sm:w-auto"
-            >
-              <a href="#oferta">
-                Quero ajudar meu filho a ler <ChevronRight />
-              </a>
-            </Button>
-            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <Check className="size-4 text-brand-mint" />
-                Para 3 a 7 anos
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="size-4 text-brand-mint" />
-                Impressão em preto e branco
-              </span>
-            </div>
           </div>
-          <PdfMockup />
+          <h1 className="max-w-4xl text-4xl font-black leading-[1.08] text-foreground md:text-6xl">
+            Seu filho pode aprender a ler em casa, com só{" "}
+            <span className="text-brand-purple">15 minutos por dia</span>
+          </h1>
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            Fichas prontas para imprimir, sem inventar nada, sem mensalidade. Você imprime, a
+            criança aprende brincando.
+          </p>
+          <div className="mt-8 w-full">
+            <HeroBannerPlaceholder />
+          </div>
+          <Button
+            asChild
+            size="lg"
+            className="mt-8 h-14 w-full rounded-xl text-base font-extrabold shadow-lg sm:w-auto"
+          >
+            <a href="#oferta">
+              Quero ajudar meu filho a ler <ChevronRight />
+            </a>
+          </Button>
+          <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-bold text-muted-foreground">
+            <span className="flex items-center gap-2">
+              <Check className="size-4 text-brand-mint" />
+              Para 3 a 7 anos
+            </span>
+            <span className="flex items-center gap-2">
+              <Check className="size-4 text-brand-mint" />
+              Impressão em preto e branco
+            </span>
+          </div>
         </div>
       </section>
       <ActivitiesSection />
@@ -580,7 +563,7 @@ export function LandingPage() {
             <h2 className="mt-2 text-3xl font-black">Garantia incondicional de 7 dias</h2>
             <p className="mt-3 max-w-2xl leading-relaxed opacity-90">
               Conheça o material com tranquilidade. Se não fizer sentido para sua família, basta
-              solicitar o reembolso total em até 7 dias — sem burocracia.
+              solicitar o reembolso total em até 7 dias, sem burocracia.
             </p>
           </div>
         </div>
