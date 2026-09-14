@@ -196,7 +196,7 @@ function HeroBannerPlaceholder() {
       width="1152"
       height="768"
       fetchPriority="high"
-      className="aspect-[3/2] w-full rounded-2xl object-cover shadow-sm md:aspect-[16/7]"
+      className="aspect-[3/2] w-full rounded-2xl object-contain shadow-sm"
     />
   );
 }
