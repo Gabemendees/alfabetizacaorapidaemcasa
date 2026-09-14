@@ -222,7 +222,7 @@ function ActivitiesSection() {
                 width="504"
                 height="486"
                 loading="lazy"
-                className="aspect-[3/4] w-full rounded-xl object-cover"
+                className="aspect-square w-full rounded-xl object-contain"
               />
               <h3 className="mt-4 text-base font-extrabold leading-tight md:text-lg">{title}</h3>
               <p className="mt-1 hidden text-sm text-muted-foreground sm:block">{text}</p>
