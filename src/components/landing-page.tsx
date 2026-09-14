@@ -1,11 +1,9 @@
 import { useState } from "react";
 import {
-  BookOpen,
   Check,
   ChevronRight,
   CircleCheck,
   FileText,
-  Heart,
   Medal,
   Printer,
   ShieldCheck,
@@ -23,6 +21,12 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import heroBannerAsset from "@/assets/atividades-alfabetizacao-banner.png.asset.json";
+import cacaPalavrasAsset from "@/assets/caca-palavras.webp.asset.json";
+import completePalavraAsset from "@/assets/complete-palavra.webp.asset.json";
+import junteSilabasAsset from "@/assets/junte-silabas.webp.asset.json";
+import leiaDesenheAsset from "@/assets/leia-desenhe.webp.asset.json";
+import ligueFiguraNomeAsset from "@/assets/ligue-figura-nome.webp.asset.json";
+import organizeLetrasAsset from "@/assets/organize-letras.webp.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -47,38 +51,32 @@ const activities = [
   {
     title: "Ligue a figura ao nome",
     text: "Associação visual para fixar palavras.",
-    icon: Heart,
-    tone: "mint",
+    image: ligueFiguraNomeAsset,
   },
   {
     title: "Junte as sílabas",
     text: "Primeiros passos para formar palavras.",
-    icon: Sparkles,
-    tone: "purple",
+    image: junteSilabasAsset,
   },
   {
     title: "Complete a palavra",
     text: "Letras que faltam viram descobertas.",
-    icon: BookOpen,
-    tone: "orange",
+    image: completePalavraAsset,
   },
   {
     title: "Caça-palavras",
     text: "Atenção e leitura em uma brincadeira.",
-    icon: Star,
-    tone: "pink",
+    image: cacaPalavrasAsset,
   },
   {
     title: "Organize as letras",
     text: "Raciocínio para construir cada palavra.",
-    icon: Trophy,
-    tone: "mint",
+    image: organizeLetrasAsset,
   },
   {
     title: "Leia e desenhe",
     text: "Leitura, imaginação e criatividade juntas.",
-    icon: FileText,
-    tone: "purple",
+    image: leiaDesenheAsset,
   },
 ] as const;
 
@@ -213,23 +211,19 @@ function ActivitiesSection() {
           text="Atividades variadas para a criança desenvolver leitura, escrita e confiança no próprio ritmo."
         />
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
-          {activities.map(({ title, text, icon: Icon, tone }) => (
+          {activities.map(({ title, text, image }) => (
             <article
               key={title}
               className="overflow-hidden rounded-2xl border border-border bg-background p-3 shadow-sm md:p-4"
             >
-              <div
-                className={cn(
-                  "flex aspect-[3/4] items-center justify-center rounded-xl",
-                  tones[tone],
-                )}
-              >
-                <div className="text-center">
-                  <Icon className="mx-auto size-12 stroke-[1.5] md:size-16" />
-                  <div className="mx-auto mt-5 h-2 w-20 rounded-full bg-current opacity-30" />
-                  <div className="mx-auto mt-2 h-2 w-14 rounded-full bg-current opacity-20" />
-                </div>
-              </div>
+              <img
+                src={image.url}
+                alt={`Exemplo da atividade ${title}`}
+                width="504"
+                height="486"
+                loading="lazy"
+                className="aspect-[3/4] w-full rounded-xl object-cover"
+              />
               <h3 className="mt-4 text-base font-extrabold leading-tight md:text-lg">{title}</h3>
               <p className="mt-1 hidden text-sm text-muted-foreground sm:block">{text}</p>
             </article>
