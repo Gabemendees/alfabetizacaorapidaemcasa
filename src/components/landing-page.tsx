@@ -4,13 +4,10 @@ import {
   ChevronRight,
   CircleCheck,
   FileText,
-  Medal,
   Printer,
   ShieldCheck,
   Sparkles,
   Star,
-  Trophy,
-  Users,
   X,
 } from "lucide-react";
 import {
@@ -27,6 +24,10 @@ import junteSilabasAsset from "@/assets/junte-silabas.webp.asset.json";
 import leiaDesenheAsset from "@/assets/leia-desenhe.webp.asset.json";
 import ligueFiguraNomeAsset from "@/assets/ligue-figura-nome.webp.asset.json";
 import organizeLetrasAsset from "@/assets/organize-letras.webp.asset.json";
+import bonusCacaPalavrasAsset from "@/assets/bonus-caca-palavras.png.asset.json";
+import bonusInterpretacaoTextoAsset from "@/assets/bonus-interpretacao-texto.png.asset.json";
+import bonusRaciocinioLeituraAsset from "@/assets/bonus-raciocinio-leitura.png.asset.json";
+import bonusRecortarColarAsset from "@/assets/bonus-recortar-colar.png.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -85,37 +86,26 @@ const activities = [
   },
 ] as const;
 
-const tones = {
-  mint: "bg-brand-mint-soft text-brand-mint",
-  purple: "bg-brand-purple-soft text-brand-purple",
-  orange: "bg-brand-orange-soft text-brand-orange",
-  pink: "bg-brand-pink-soft text-brand-pink",
-} as const;
-
 const bonuses = [
   {
     title: "Caça-Palavras de Leitura",
     text: "20 caça-palavras temáticos para treinar o reconhecimento de palavras de forma divertida.",
-    icon: Trophy,
-    tone: "orange",
+    image: bonusCacaPalavrasAsset,
   },
   {
     title: "Fichas de Interpretação de Texto",
     text: "20 textos curtos com perguntas para desenvolver a compreensão de leitura.",
-    icon: Medal,
-    tone: "purple",
+    image: bonusInterpretacaoTextoAsset,
   },
   {
     title: "Desafios de Raciocínio e Leitura",
     text: "Atividades como ordem alfabética, contagem de sílabas e completar vogais, para desafiar a criança além do básico.",
-    icon: Users,
-    tone: "mint",
+    image: bonusRaciocinioLeituraAsset,
   },
   {
     title: "Atividades Ilustradas para Recortar e Colar",
     text: "Exercícios com figuras para ligar, circular e colar, tornando o aprendizado mais visual e lúdico.",
-    icon: FileText,
-    tone: "pink",
+    image: bonusRecortarColarAsset,
   },
 ] as const;
 
@@ -245,7 +235,7 @@ function BonusSection() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading eyebrow="Mais valor para sua família" title="E ainda tem bônus" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {bonuses.map(({ title, text, icon: Icon, tone }) => (
+          {bonuses.map(({ title, text, image }) => (
             <article
               key={title}
               className="relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm"
@@ -253,16 +243,14 @@ function BonusSection() {
               <span className="absolute right-3 top-3 z-10 max-w-[9rem] rounded-full bg-brand-pink px-3 py-1 text-center text-[0.65rem] font-extrabold uppercase leading-tight text-primary-foreground">
                 Bônus incluso
               </span>
-              <div
-                className={cn(
-                  "mb-5 flex aspect-[4/3] items-center justify-center rounded-xl",
-                  tones[tone],
-                )}
-                role="img"
-                aria-label={`Espaço reservado para a imagem de ${title}`}
-              >
-                <Icon className="size-12 stroke-[1.5]" />
-              </div>
+              <img
+                src={image.url}
+                alt={`Criança realizando o bônus ${title}`}
+                width="627"
+                height="627"
+                loading="lazy"
+                className="mb-5 aspect-square w-full rounded-xl object-contain"
+              />
               <h3 className="text-lg font-extrabold leading-tight">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
             </article>
