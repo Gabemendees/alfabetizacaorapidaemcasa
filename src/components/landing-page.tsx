@@ -22,6 +22,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import heroBannerAsset from "@/assets/atividades-alfabetizacao-banner.png.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -191,10 +192,13 @@ function SectionHeading({
 
 function HeroBannerPlaceholder() {
   return (
-    <div
-      className="aspect-[16/7] w-full rounded-2xl border-2 border-dashed border-border bg-card shadow-sm"
-      role="img"
-      aria-label="Espaço reservado para a imagem principal do material"
+    <img
+      src={heroBannerAsset.url}
+      alt="Criança com materiais de alfabetização prontos para imprimir"
+      width="1152"
+      height="768"
+      fetchPriority="high"
+      className="aspect-[3/2] w-full rounded-2xl object-cover shadow-sm md:aspect-[16/7]"
     />
   );
 }
