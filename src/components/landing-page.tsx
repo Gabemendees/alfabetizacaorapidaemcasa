@@ -42,15 +42,18 @@ const SALES_CONFIG = {
     name: "100 Atividades de Alfabetização",
     oldPrice: "R$29,90",
     price: "R$9,90",
-    checkoutUrl: "#",
+    checkoutUrl: "https://app.zuptos.com.br/checkout/35bba8fee873540b",
   },
   complete: {
     name: "300 Atividades de Alfabetização",
     oldPrice: "R$39,90",
     price: "R$19,90",
-    checkoutUrl: "#",
+    checkoutUrl: "https://app.zuptos.com.br/checkout/e93db260f915014a",
   },
-  upsell: { price: "R$14,90", checkoutUrl: "#" },
+  upsell: {
+    price: "R$14,90",
+    checkoutUrl: "https://app.zuptos.com.br/checkout/aa2a0a62848a5ccb",
+  },
 } as const;
 
 const activities = [
