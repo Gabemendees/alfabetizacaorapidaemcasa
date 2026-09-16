@@ -510,7 +510,7 @@ export function LandingPage() {
 
   return (
     <main className="overflow-hidden">
-      <section className="relative flex min-h-screen items-center px-5 py-12 md:py-16">
+      <section className="relative flex px-5 py-10 md:py-12">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center text-center">
           <h1 className="max-w-4xl text-4xl font-black leading-[1.08] text-foreground md:text-6xl">
             Seu filho pode aprender a ler em casa, com só{" "}
