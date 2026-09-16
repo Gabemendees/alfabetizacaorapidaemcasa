@@ -512,13 +512,6 @@ export function LandingPage() {
     <main className="overflow-hidden">
       <section className="relative flex min-h-screen items-center px-5 py-12 md:py-16">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center text-center">
-          <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-brand-mint-soft px-4 py-2 text-sm font-extrabold text-brand-mint">
-            <CircleCheck className="size-4" />
-            + de 300 famílias já compraram
-          </p>
-          <p className="mb-4 text-lg font-black uppercase tracking-wide text-brand-purple md:text-xl">
-            Alfabetização em casa
-          </p>
           <h1 className="max-w-4xl text-4xl font-black leading-[1.08] text-foreground md:text-6xl">
             Seu filho pode aprender a ler em casa, com só{" "}
             <span className="text-brand-purple">15 minutos por dia</span>
