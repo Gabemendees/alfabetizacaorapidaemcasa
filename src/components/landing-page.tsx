@@ -523,15 +523,6 @@ export function LandingPage() {
           <div className="mt-8 w-full">
             <HeroBannerPlaceholder />
           </div>
-          <Button
-            asChild
-            size="lg"
-            className="mt-8 h-14 w-full rounded-xl text-base font-extrabold shadow-lg sm:w-auto"
-          >
-            <a href="#oferta">
-              Quero ajudar meu filho a ler <ChevronRight />
-            </a>
-          </Button>
           <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-bold text-muted-foreground">
             <span className="flex items-center gap-2">
               <Check className="size-4 text-brand-mint" />
