@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   Check,
+  ChevronLeft,
   ChevronRight,
   CircleCheck,
   FileText,
   Printer,
   ShieldCheck,
   Sparkles,
-  Star,
-  X,
 } from "lucide-react";
 import {
   Accordion,
@@ -102,30 +101,22 @@ const bonuses = [
   },
 ] as const;
 
-const testimonials = [
+const feedbacks = [
   {
-    name: "Mariana S.",
-    city: "Campinas, SP",
-    initials: "MS",
-    text: "Virou nosso momento favorito do dia. As atividades são claras e meu filho pede para fazer mais.",
+    name: "Fernanda Costa",
+    image: "/feedback/feedback-fernanda.webp",
   },
   {
-    name: "Rafael M.",
-    city: "Curitiba, PR",
-    initials: "RM",
-    text: "Eu não sabia por onde começar. Com as fichas prontas, ficou fácil acompanhar a evolução em casa.",
+    name: "Thaís Oliveira",
+    image: "/feedback/feedback-thais.webp",
   },
   {
-    name: "Juliana A.",
-    city: "Salvador, BA",
-    initials: "JA",
-    text: "Em poucas semanas ela já reconhecia sílabas que antes confundia. Material bonito e muito prático.",
+    name: "Camila Santos",
+    image: "/feedback/feedback-camila.webp",
   },
   {
-    name: "Camila R.",
-    city: "Goiânia, GO",
-    initials: "CR",
-    text: "Imprimo só o que vamos usar e seguimos no ritmo dela. Foi um ótimo apoio para nossa rotina.",
+    name: "Juliana",
+    image: "/feedback/feedback-juliana.webp",
   },
 ] as const;
 
@@ -255,36 +246,72 @@ function BonusSection() {
 }
 
 function TestimonialsSection() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollFeedbacks = (direction: "previous" | "next") => {
+    carouselRef.current?.scrollBy({
+      left:
+        direction === "next"
+          ? carouselRef.current.clientWidth * 0.8
+          : -carouselRef.current.clientWidth * 0.8,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="bg-card px-5 py-20 md:py-28">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading eyebrow="Histórias reais de aprendizado" title="Quem já usou, aprovou" />
-        <div className="grid gap-4 md:grid-cols-2">
-          {testimonials.map(({ name, city, text }) => (
-            <article key={name} className="rounded-2xl border border-border bg-background p-6">
-              <div className="mb-4 flex items-center gap-3">
-                <div
-                  className="size-12 shrink-0 rounded-full border-2 border-dashed border-brand-mint bg-card"
-                  role="img"
-                  aria-label={`Espaço reservado para a foto de ${name}`}
-                />
-                <div>
-                  <h3 className="font-extrabold">{name}</h3>
-                  <p className="text-xs text-muted-foreground">{city}</p>
-                </div>
-                <div className="ml-auto flex" aria-label="5 de 5 estrelas">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={`${name}-${i}`}
-                      className="size-4 fill-brand-orange text-brand-orange"
-                    />
-                  ))}
-                </div>
-              </div>
-              <p className="leading-relaxed text-muted-foreground">“{text}”</p>
-            </article>
+        <SectionHeading
+          eyebrow="Feedbacks de quem já comprou"
+          title="Veja o que as famílias estão falando"
+          text="Arraste para o lado e confira alguns dos resultados enviados por nossas clientes."
+        />
+        <div className="mb-5 flex justify-end gap-3">
+          <Button
+            type="button"
+            size="icon"
+            variant="outline"
+            onClick={() => scrollFeedbacks("previous")}
+            aria-label="Ver feedback anterior"
+            className="rounded-full"
+          >
+            <ChevronLeft />
+          </Button>
+          <Button
+            type="button"
+            size="icon"
+            variant="outline"
+            onClick={() => scrollFeedbacks("next")}
+            aria-label="Ver próximo feedback"
+            className="rounded-full"
+          >
+            <ChevronRight />
+          </Button>
+        </div>
+        <div
+          ref={carouselRef}
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {feedbacks.map(({ name, image }) => (
+            <figure
+              key={name}
+              className="w-[86%] shrink-0 snap-center overflow-hidden rounded-3xl border border-border bg-background p-2 shadow-md sm:w-[60%] lg:w-[38%]"
+            >
+              <img
+                src={image}
+                alt={`Feedback de ${name} sobre o material de alfabetização`}
+                width="640"
+                height="1387"
+                loading="lazy"
+                className="h-auto w-full rounded-2xl object-contain"
+              />
+              <figcaption className="sr-only">Feedback enviado por {name}</figcaption>
+            </figure>
           ))}
         </div>
+        <p className="mt-3 text-center text-sm font-bold text-muted-foreground md:hidden">
+          Deslize para o lado para ver mais
+        </p>
       </div>
     </section>
   );
