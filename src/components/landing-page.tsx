@@ -16,7 +16,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import heroBannerAsset from "@/assets/atividades-alfabetizacao-banner.png.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -169,14 +168,22 @@ function SectionHeading({
 
 function HeroBannerPlaceholder() {
   return (
-    <img
-      src={heroBannerAsset.url}
-      alt="Criança com materiais de alfabetização prontos para imprimir"
-      width="1152"
-      height="768"
-      fetchPriority="high"
-      className="aspect-[3/2] w-full rounded-2xl object-contain shadow-sm"
-    />
+    <picture>
+      <source
+        type="image/webp"
+        srcSet="/hero/atividades-alfabetizacao-480.webp 480w, /hero/atividades-alfabetizacao-768.webp 768w, /hero/atividades-alfabetizacao-1152.webp 1152w"
+        sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1200px) calc(100vw - 40px), 1152px"
+      />
+      <img
+        src="/hero/atividades-alfabetizacao-1152.webp"
+        alt="Criança com materiais de alfabetização prontos para imprimir"
+        width="1152"
+        height="768"
+        fetchPriority="high"
+        decoding="async"
+        className="aspect-[3/2] w-full rounded-2xl object-contain shadow-sm"
+      />
+    </picture>
   );
 }
 
@@ -201,6 +208,8 @@ function ActivitiesSection() {
                 width="437"
                 height="600"
                 loading="lazy"
+                decoding="async"
+                sizes="(max-width: 767px) calc(50vw - 28px), 33vw"
                 className="aspect-[437/600] w-full rounded-xl object-contain"
               />
               <h3 className="mt-4 text-base font-extrabold leading-tight md:text-lg">{title}</h3>
@@ -233,6 +242,8 @@ function BonusSection() {
                 width="656"
                 height="600"
                 loading="lazy"
+                decoding="async"
+                sizes="(max-width: 639px) calc(100vw - 72px), (max-width: 1023px) calc(50vw - 44px), 25vw"
                 className="mb-5 aspect-[656/600] w-full rounded-xl object-contain"
               />
               <h3 className="text-lg font-extrabold leading-tight">{title}</h3>
@@ -303,6 +314,8 @@ function TestimonialsSection() {
                 width="640"
                 height="1387"
                 loading="lazy"
+                decoding="async"
+                sizes="(max-width: 639px) 86vw, (max-width: 1023px) 60vw, 38vw"
                 className="h-auto w-full rounded-2xl object-contain"
               />
               <figcaption className="sr-only">Feedback enviado por {name}</figcaption>
@@ -545,11 +558,12 @@ export function LandingPage() {
       <section className="bg-brand-purple px-5 py-16 text-primary-foreground md:py-20">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center md:flex-row md:text-left">
           <img
-            src="/garantia/selo-garantia-7-dias.png"
+            src="/garantia/selo-garantia-7-dias.webp"
             alt="Selo de garantia de 7 dias"
-            width="160"
-            height="152"
+            width="126"
+            height="126"
             loading="lazy"
+            decoding="async"
             className="w-32 shrink-0 drop-shadow-xl md:w-36"
           />
           <div>
