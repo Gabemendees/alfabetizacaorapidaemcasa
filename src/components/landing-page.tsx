@@ -18,10 +18,6 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import heroBannerAsset from "@/assets/atividades-alfabetizacao-banner.png.asset.json";
-import bonusCacaPalavrasAsset from "@/assets/bonus-caca-palavras.png.asset.json";
-import bonusInterpretacaoTextoAsset from "@/assets/bonus-interpretacao-texto.png.asset.json";
-import bonusRaciocinioLeituraAsset from "@/assets/bonus-raciocinio-leitura.png.asset.json";
-import bonusRecortarColarAsset from "@/assets/bonus-recortar-colar.png.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -87,22 +83,22 @@ const bonuses = [
   {
     title: "Caça-Palavras de Leitura",
     text: "20 caça-palavras temáticos para treinar o reconhecimento de palavras de forma divertida.",
-    image: bonusCacaPalavrasAsset,
+    image: "/bonus/caca-palavras-leitura.webp",
   },
   {
     title: "Fichas de Interpretação de Texto",
     text: "20 textos curtos com perguntas para desenvolver a compreensão de leitura.",
-    image: bonusInterpretacaoTextoAsset,
+    image: "/bonus/interpretacao-texto.webp",
   },
   {
     title: "Desafios de Raciocínio e Leitura",
     text: "Atividades como ordem alfabética, contagem de sílabas e completar vogais, para desafiar a criança além do básico.",
-    image: bonusRaciocinioLeituraAsset,
+    image: "/bonus/raciocinio-leitura.webp",
   },
   {
     title: "Atividades Ilustradas para Recortar e Colar",
     text: "Exercícios com figuras para ligar, circular e colar, tornando o aprendizado mais visual e lúdico.",
-    image: bonusRecortarColarAsset,
+    image: "/bonus/recortar-colar.webp",
   },
 ] as const;
 
@@ -235,18 +231,18 @@ function BonusSection() {
           {bonuses.map(({ title, text, image }) => (
             <article
               key={title}
-              className="relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm"
+              className="overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm"
             >
-              <span className="absolute right-3 top-3 z-10 max-w-[9rem] rounded-full bg-brand-pink px-3 py-1 text-center text-[0.65rem] font-extrabold uppercase leading-tight text-primary-foreground">
+              <span className="mb-3 inline-flex rounded-full bg-brand-pink px-3 py-1 text-center text-[0.65rem] font-extrabold uppercase leading-tight text-primary-foreground">
                 Bônus incluso
               </span>
               <img
-                src={image.url}
+                src={image}
                 alt={`Criança realizando o bônus ${title}`}
-                width="627"
-                height="627"
+                width="656"
+                height="600"
                 loading="lazy"
-                className="mb-5 aspect-square w-full rounded-xl object-contain"
+                className="mb-5 aspect-[656/600] w-full rounded-xl object-contain"
               />
               <h3 className="text-lg font-extrabold leading-tight">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
