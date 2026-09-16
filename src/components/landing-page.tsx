@@ -553,9 +553,14 @@ export function LandingPage() {
       />
       <section className="bg-brand-purple px-5 py-16 text-primary-foreground md:py-20">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center md:flex-row md:text-left">
-          <div className="flex size-20 shrink-0 items-center justify-center rounded-full bg-card/15">
-            <ShieldCheck className="size-10" />
-          </div>
+          <img
+            src="/garantia/selo-garantia-7-dias.png"
+            alt="Selo de garantia de 7 dias"
+            width="160"
+            height="152"
+            loading="lazy"
+            className="w-32 shrink-0 drop-shadow-xl md:w-36"
+          />
           <div>
             <p className="text-sm font-extrabold uppercase opacity-80">Sua compra protegida</p>
             <h2 className="mt-2 text-3xl font-black">Garantia incondicional de 7 dias</h2>
