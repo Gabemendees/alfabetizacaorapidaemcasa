@@ -18,12 +18,6 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import heroBannerAsset from "@/assets/atividades-alfabetizacao-banner.png.asset.json";
-import cacaPalavrasAsset from "@/assets/caca-palavras.webp.asset.json";
-import completePalavraAsset from "@/assets/complete-palavra.webp.asset.json";
-import junteSilabasAsset from "@/assets/junte-silabas.webp.asset.json";
-import leiaDesenheAsset from "@/assets/leia-desenhe.webp.asset.json";
-import ligueFiguraNomeAsset from "@/assets/ligue-figura-nome.webp.asset.json";
-import organizeLetrasAsset from "@/assets/organize-letras.webp.asset.json";
 import bonusCacaPalavrasAsset from "@/assets/bonus-caca-palavras.png.asset.json";
 import bonusInterpretacaoTextoAsset from "@/assets/bonus-interpretacao-texto.png.asset.json";
 import bonusRaciocinioLeituraAsset from "@/assets/bonus-raciocinio-leitura.png.asset.json";
@@ -60,32 +54,32 @@ const activities = [
   {
     title: "Ligue a figura ao nome",
     text: "Associação visual para fixar palavras.",
-    image: ligueFiguraNomeAsset,
+    image: "/atividades/ligue-figura-nome.webp",
   },
   {
     title: "Junte as sílabas",
     text: "Primeiros passos para formar palavras.",
-    image: junteSilabasAsset,
+    image: "/atividades/junte-silabas.webp",
   },
   {
     title: "Complete a palavra",
     text: "Letras que faltam viram descobertas.",
-    image: completePalavraAsset,
+    image: "/atividades/complete-palavra.webp",
   },
   {
     title: "Caça-palavras",
     text: "Atenção e leitura em uma brincadeira.",
-    image: cacaPalavrasAsset,
+    image: "/atividades/caca-palavras.webp",
   },
   {
     title: "Organize as letras",
     text: "Raciocínio para construir cada palavra.",
-    image: organizeLetrasAsset,
+    image: "/atividades/organize-letras.webp",
   },
   {
     title: "Leia e desenhe",
     text: "Leitura, imaginação e criatividade juntas.",
-    image: leiaDesenheAsset,
+    image: "/atividades/leia-desenhe.webp",
   },
 ] as const;
 
@@ -215,12 +209,12 @@ function ActivitiesSection() {
               className="overflow-hidden rounded-2xl border border-border bg-background p-3 shadow-sm md:p-4"
             >
               <img
-                src={image.url}
+                src={image}
                 alt={`Exemplo da atividade ${title}`}
-                width="504"
-                height="486"
+                width="437"
+                height="600"
                 loading="lazy"
-                className="aspect-square w-full rounded-xl object-contain"
+                className="aspect-[437/600] w-full rounded-xl object-contain"
               />
               <h3 className="mt-4 text-base font-extrabold leading-tight md:text-lg">{title}</h3>
               <p className="mt-1 hidden text-sm text-muted-foreground sm:block">{text}</p>
