@@ -292,9 +292,6 @@ function TestimonialsSection() {
             </article>
           ))}
         </div>
-        <p className="mt-5 text-center text-xs text-muted-foreground">
-          * Nomes e depoimentos ilustrativos. Substitua pelos relatos reais dos seus clientes.
-        </p>
       </div>
     </section>
   );
