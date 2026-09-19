@@ -4,13 +4,13 @@ import { LandingPage } from "@/components/landing-page";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Atividades de Alfabetização para Imprimir" },
+      { title: "Alfabetização em Casa" },
       {
         name: "description",
         content:
           "Ajude seu filho de 3 a 7 anos a aprender a ler com fichas de alfabetização prontas para imprimir.",
       },
-      { property: "og:title", content: "Atividades de Alfabetização para Imprimir" },
+      { property: "og:title", content: "Alfabetização em Casa" },
       {
         property: "og:description",
         content:
