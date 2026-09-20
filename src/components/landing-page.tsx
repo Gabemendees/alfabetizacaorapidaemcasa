@@ -508,7 +508,7 @@ export function LandingPage() {
   const [showUpsell, setShowUpsell] = useState(false);
   const [upsellAccepted, setUpsellAccepted] = useState(false);
   const goToCheckout = (url: string) => {
-    window.location.href = url;
+    window.location.href = `${url}${window.location.search}`;
   };
   const acceptUpsell = () => {
     setUpsellAccepted(true);
